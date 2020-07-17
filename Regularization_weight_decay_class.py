@@ -99,9 +99,9 @@ if __name__ == "__main__":
     model = my_net().to(device)
     # 初始化正则化
     if weight_decay>0:
-    reg_loss=Regularization(model, weight_decay, p=2).to(device)
+        reg_loss=Regularization(model, weight_decay, p=2).to(device)
     else:
-    print("no regularization")
+        print("no regularization")
     
     
     criterion= nn.CrossEntropyLoss().to(device) # CrossEntropyLoss=softmax+cross entropy
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     # loss and regularization
     loss = criterion(input=out, target=batch_train_label)
     if weight_decay > 0:
-    loss = loss + reg_loss(model)
+        loss = loss + reg_loss(model)
     total_loss = loss.item()
     
     # backprop
